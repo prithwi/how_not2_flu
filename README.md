@@ -4,10 +4,10 @@ Accompanying material for "how not to forecast flu" paper.
 
 **Table of contents**
 
-1. [Surveillance Instability](#Surveillance-Instability)
-1. [Between Surveillance Deviations](#Surveillance-deviations)
-2. [Within Surveiillance Deviations](#Strain-deviations)
-4. [Drop off of surveillance](#Surveillance-Drop-off)
+1. [Surveillance Instability](#surveillance-instability)
+1. [Between Surveillance Deviations](#surveillance-deviations)
+2. [Within Surveiillance Deviations](#strain-deviations)
+4. [Drop off of surveillance](#surveillance-drop-off)
 
 # Surveillance Instability
 
@@ -17,8 +17,8 @@ instability can vary from one country to another (within a single network) as
 well as between networks. Here we analyze the instability of two different kinds
 of surveillance networks:
 
-1. [PAHO](#PAHO-Instability): FluNet network for ILI (a lab based system)
-2. [CDC](#CDC-Instability): ILINet network for ILI (an outpatient reporting system)
+1. [PAHO](#paho-Instability): FluNet network for ILI (a lab based system)
+2. [CDC](#cdc-Instability): ILINet network for ILI (an outpatient reporting system)
 
 As can be seen both networks show surveillance instability.
 
