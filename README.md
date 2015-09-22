@@ -1,4 +1,4 @@
-# how_not2_filu
+# how_not2_flu
 Accompanying material for "how not to forecast flu" paper.
 
 
