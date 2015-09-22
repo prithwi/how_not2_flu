@@ -32,7 +32,7 @@ estimates are generally updated at irregular intervals. We assumed the estimate
 for a particular country for an epi week as avialable from the last update as
 the true value and calculated percentage relative error as:
 
-$$\text{Error} = \frac{\text{data} - \text{last_update}}{\text{last_update}}$$
+$\text{Error} = \frac{\text{data} - \text{last_update}}{\text{last_update}}$
 
 The snapshot of the daily downloads can be found in [PAHO
 updates](./data/PAHO_2013-10-10.xlsx). We can show the relative error as 
