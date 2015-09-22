@@ -83,7 +83,7 @@ below. The data archive can be found in [cdc real time
 data snapshot](./data/cdc-combined-national-2015-05-25.csv)
 
 
-```
+```python
 selected_cdc = cdc_data.query('season in [2010, 2011, 2012, 2013, 2014]')
 
 # Smoothing data
@@ -135,7 +135,7 @@ and compare the incidence of total ILI vs Flu A and Flu B.
 
 The code snippet for the scale conversions is given below:
 
-```
+```python
 # **************************************************************
 #                   MANIPULATORS
 # **************************************************************
