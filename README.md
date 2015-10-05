@@ -1,13 +1,13 @@
-# how_not2_filu
+# how_not2_flu
 Accompanying material for "how not to forecast flu" paper.
 
 
 **Table of contents**
 
-1. [Surveillance Instability](#Surveillance-Instability)
-1. [Between Surveillance Deviations](#Surveillance-deviations)
-2. [Within Surveiillance Deviations](#Strain-deviations)
-4. [Drop off of surveillance](#Surveillance-Drop-off)
+1. [Surveillance Instability](#surveillance-instability)
+1. [Between Surveillance Deviations](#surveillance-deviations)
+2. [Within Surveiillance Deviations](#strain-deviations)
+4. [Drop off of surveillance](#surveillance-drop-off)
 
 # Surveillance Instability
 
@@ -17,8 +17,8 @@ instability can vary from one country to another (within a single network) as
 well as between networks. Here we analyze the instability of two different kinds
 of surveillance networks:
 
-1. [PAHO](#PAHO-Instability): FluNet network for ILI (a lab based system)
-2. [CDC](#CDC-Instability): ILINet network for ILI (an outpatient reporting system)
+1. [PAHO](#paho-Instability): FluNet network for ILI (a lab based system)
+2. [CDC](#cdc-Instability): ILINet network for ILI (an outpatient reporting system)
 
 As can be seen both networks show surveillance instability.
 
@@ -83,7 +83,7 @@ below. The data archive can be found in [cdc real time
 data snapshot](./data/cdc-combined-national-2015-05-25.csv)
 
 
-```
+```python
 selected_cdc = cdc_data.query('season in [2010, 2011, 2012, 2013, 2014]')
 
 # Smoothing data
@@ -135,7 +135,7 @@ and compare the incidence of total ILI vs Flu A and Flu B.
 
 The code snippet for the scale conversions is given below:
 
-```
+```python
 # **************************************************************
 #                   MANIPULATORS
 # **************************************************************
