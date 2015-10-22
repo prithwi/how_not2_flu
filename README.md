@@ -5,7 +5,7 @@ Accompanying material for "how not to forecast flu" paper.
 **Table of contents**
 
 1. [Surveillance Instability](#surveillance-instability)
-1. [Between Surveillance Deviations](#surveillance-deviations)
+1. [Between Surveillance Deviations](#between-surveillance-deviations)
 2. [Within Surveiillance Deviations](#strain-deviations)
 4. [Drop off of surveillance](#surveillance-drop-off)
 5. [Christmass Effect](#christmass-effect)
