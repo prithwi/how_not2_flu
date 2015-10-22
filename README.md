@@ -9,6 +9,9 @@ Accompanying material for "how not to forecast flu" paper.
 2. [Within Surveiillance Deviations](#strain-deviations)
 4. [Drop off of surveillance](#surveillance-drop-off)
 5. [Christmass Effect](#christmass-effect)
+6. [Data and Figures](#data)
+
+- - -
 
 # Surveillance Instability
 
@@ -226,3 +229,19 @@ total visits coupled with a steady ILI related visit contributes to an inlated
 percent ILI, historically around week 52 for ILINet in USA.
 
 ![png](./figures/christmass_effect.png)
+
+- - -
+
+# List of Data Snapshots
+
+1. [CDC Historical Archives](./data/cdc-historical-2010-2015.csv)
+2. [CDC ILINet](./data/cdc-ILINet-national-2015-05-25.csv)
+3. [CDC WHONREVSS](./data/cdc-WHO_NREVSS-national-2015-05-25.csv)
+4. [PAHO](./data/PAHO_2013-10-10.xlsx)
+5. [CDC Combined Surveillance
+   File](./data/cdc-combined-national-2015-05-25.csv)
+
+6. Performance Measures:
+
+    1. [Single Source accuracy](./data/singleSource.csv)
+    2. [Multiple Source accuracy](./data/MultipleSource.csv)
