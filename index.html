@@ -8,21 +8,23 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    
+    <!-->Mathjax Support</-->
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
   </head>
   <body>
     <section class="page-header">
       <h1 class="project-name">How not2 flu</h1>
       <h2 class="project-tagline">Accompanying material for &quot;how not to forecast flu&quot; paper.</h2>
-      <a href="https://github.com/prithwi/how_not2_flu" class="btn">View on GitHub</a>
-      <a href="https://github.com/prithwi/how_not2_flu/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/prithwi/how_not2_flu/tarball/master" class="btn">Download .tar.gz</a>
+      <!--><a href="https://github.com/prithwi/how_not2_flu" class="btn">View on GitHub</a> </-->
+      <!--><a href="https://github.com/prithwi/how_not2_flu/zipball/master" class="btn">Download .zip</a></-->
+      <!--><a href="https://github.com/prithwi/how_not2_flu/tarball/master" class="btn">Download .tar.gz</a></-->
     </section>
 
     <section class="main-content">
-      <h1>
-<a id="how-not-2-flu" class="anchor" href="#how-not-2-flu" aria-hidden="true"><span class="octicon octicon-link"></span></a>How Not 2 Flu</h1>
 
-<p>Accompanying material for "how not to forecast flu" paper.</p>
 
 <p><strong>Table of contents</strong></p>
 
@@ -32,7 +34,7 @@
 <li><a href="#strain-deviations">Within Surveiillance Deviations</a></li>
 <li><a href="#surveillance-drop-off">Drop off of surveillance</a></li>
 <li><a href="#christmass-effect">Christmass Effect</a></li>
-<li><a href="#data">Data and Figures</a></li>
+<li><a href="#list-of-data-snapshots">Data and Figures</a></li>
 </ol>
 
 <hr>
@@ -65,7 +67,9 @@ estimates are generally updated at irregular intervals. We assumed the estimate
 for a particular country for an epi week as avialable from the last update as
 the true value and calculated percentage relative error as:</p>
 
-<p>$\text{Error} = \frac{\text{data} - \text{last_update}}{\text{last_update}}$</p>
+<p>
+  $\text{Error} = \frac{\text{data} - \text{last_update}}{\text{last_update}}$
+</p>
 
 <p>The snapshot of the daily downloads can be found in <a href="./data/PAHO_2013-10-10.xlsx">PAHO
 updates</a>. We can show the relative error as 
