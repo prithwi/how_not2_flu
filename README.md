@@ -8,6 +8,7 @@ Accompanying material for "how not to forecast flu" paper.
 1. [Between Surveillance Deviations](#surveillance-deviations)
 2. [Within Surveiillance Deviations](#strain-deviations)
 4. [Drop off of surveillance](#surveillance-drop-off)
+5. [Christmass Effect](#christmass-effect)
 
 # Surveillance Instability
 
@@ -109,8 +110,9 @@ The resultant scatter plot is shown below:
 
 ![CDC Scatter plot](./figures/ili_surveillance_drop.png)
 
+- - -
 
-# Surveillance Deviations 
+# Between Surveillance Deviations 
 
 Often times, there are deviations in estimated ILI incidence for two different
 networks for the same region. We illustrate this for CDC by comparing `ILINet` 
@@ -122,7 +124,7 @@ real time data snapshot](./data/cdc-combined-national-2015-05-25.csv)
 
 ![ILINet vs WHO NREVSS](./figures/ilinet_vs_nrevss.png)
 
-
+- - -
 
 # Strain Deviations
 
@@ -180,3 +182,47 @@ for pulbic perusal.
 This can be show pictorially as given below which shows a phase deviation
 between Flu B and ILI
 ![CDC ILI strain offsets](./figures/ilinet_subtyped.png)
+
+- - -
+
+# Christmass Effect
+
+Surveillance measures can often suffer from variations such as holiday periods.
+During holidays, such as Christmass in USA, people may chose to visit hospitals for only
+essential visits (example: people may not visit for elective surgeries). 
+As a result, although the total number of patients may decrease, the number of 
+ILI related visits may remain the same. This contributes to an inflated
+measure of `Percent Weighted ILI` which is used by CDC to determine the severity
+of a flu season and lead to a double peaked season.
+
+The code snippet for processing the data to verify the `Christmass Effect` is
+given below:
+
+```python
+def normalize(df):
+    return (df - df.mean(axis=0)) / df.std(axis=0)
+
+used_cdc = cdc_data.query('2004 < season < 2015')
+
+# Normalizing ILI and TOTAL to plot on same scale
+cdc[['NormalizedILI', 'NormalizedTOTAL']] = (cdc[['ILITOTAL', 'TOTAL PATIENTS', 'season']].groupby('season')
+                                             .apply(normalize)[['ILITOTAL', 'TOTAL PATIENTS']])
+
+metrics = ['NormalizedTOTAL', 'NormalizedILI', '% WEIGHTED ILI']
+
+# Calculating means for each week
+meanDF = used_cdc.groupby('WEEK').mean()[metrics]
+
+
+# Reindexing the plotting dataframe to plot from 40-39 weeks
+x=np.r_[np.arange(40, 53), np.arange(1,40)]
+other_x = np.arange(len(x))
+index_map = dict(zip(x, other_x))
+plot_meanDF = meanDF.ix[x, :].reset_index()
+```
+
+`Christmass effect` is highlighted below which shows that a dip in normalized
+total visits coupled with a steady ILI related visit contributes to an inlated
+percent ILI, historically around week 52 for ILINet in USA.
+
+![png](./figures/christmass_effect.png)
