@@ -8,34 +8,26 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    
-    <script type="text/javascript" async
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
   </head>
   <body>
     <section class="page-header">
       <h1 class="project-name">How not2 flu</h1>
       <h2 class="project-tagline">Accompanying material for &quot;how not to forecast flu&quot; paper.</h2>
-      <!--
-      <a href="https://github.com/prithwi/how_not2_flu" class="btn">View on GitHub</a> 
+      <a href="https://github.com/prithwi/how_not2_flu" class="btn">View on GitHub</a>
       <a href="https://github.com/prithwi/how_not2_flu/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/prithwi/how_not2_flu/tarball/master" class="btn">Download .tar.gz</a>
-      -->
     </section>
 
     <section class="main-content">
-
-
-<p><strong>Table of contents</strong></p>
+      <p><strong>Table of contents</strong></p>
 
 <ol>
 <li><a href="#surveillance-instability">Surveillance Instability</a></li>
 <li><a href="#between-surveillance-deviations">Between Surveillance Deviations</a></li>
-<li><a href="#strain-deviations">Within Surveiillance Deviations</a></li>
+<li><a href="#strain-deviations">Within Surveillance Deviations</a></li>
 <li><a href="#surveillance-drop-off">Drop off of surveillance</a></li>
-<li><a href="#christmass-effect">Christmass Effect</a></li>
-<li><a href="#list-of-data-snapshots">Data and Figures</a></li>
+<li><a href="#christmass-effect">Christmas Effect</a></li>
+<li><a href="#data">Data and Figures</a></li>
 </ol>
 
 <hr>
@@ -44,7 +36,7 @@
 <a id="surveillance-instability" class="anchor" href="#surveillance-instability" aria-hidden="true"><span class="octicon octicon-link"></span></a>Surveillance Instability</h1>
 
 <p>Surveillance data is generally unstable. Usually it takes a number of updates
-from the agency before the surveillance data gets stabilizied.  This
+from the agency before the surveillance data gets stabilized.  This
 instability can vary from one country to another (within a single network) as
 well as between networks. Here we analyze the instability of two different kinds
 of surveillance networks:</p>
@@ -65,17 +57,15 @@ of surveillance networks:</p>
 <code>surveillance drop-off</code> on this network. PAHO updates for several Latin
 American countries were collected daily from <code>2012-10</code> to <code>2013-10</code>.  ILI
 estimates are generally updated at irregular intervals. We assumed the estimate
-for a particular country for an epi week as avialable from the last update as
+for a particular country for an epi week as available from the last update as
 the true value and calculated percentage relative error as:</p>
 
-<p>
-  $$\text{Error} = \frac{\text{data} - \text{last_update}}{\text{last_update}}$$
-</p>
+<p>$\text{Error} = \frac{\text{data} - \text{last_update}}{\text{last_update}}$</p>
 
 <p>The snapshot of the daily downloads can be found in <a href="./data/PAHO_2013-10-10.xlsx">PAHO
 updates</a>. We can show the relative error as 
 a function of update as given below:
-<img src="./figures/ili_updates.png" alt="PAHO Instabiity"></p>
+<img src="./figures/ili_updates.png" alt="PAHO Instability"></p>
 
 <p>As can be seen in the figure countries fall nicely in two groups as slowly
 stabilizing countries  (such as <code>Colombia</code> and <code>Peru</code>) and quickly stabilizing
@@ -92,7 +82,7 @@ found in <a href="./data/cdc-historical-2010-2015.csv">CDC historical archive sn
 <h3>
 <a id="animated-cdc-updates" class="anchor" href="#animated-cdc-updates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Animated CDC Updates</h3>
 
-<p>An animation of how the CDC updates happens for varios epi weeks is shown
+<p>An animation of how the CDC updates happens for various epi weeks is shown
 below. We animate the updates for 2013-2014 season for various reporting week
 here:
 <img src="./figures/animated_cdc.gif" alt="Animated CDC Updates"></p>
@@ -105,7 +95,7 @@ shown below. We also plot the mean relative error in this figure.
 <img src="./figures/cdc_instability.png" alt="CDC instability stats"></p>
 
 <p>As can be seen, similar to PAHO a number of updates is required before the 
-value stabilizies. However, CDC data for USA is found to be <code>fast stabilizing</code>. </p>
+value stabilizes. However, CDC data for USA is found to be <code>fast stabilizing</code>. </p>
 
 <hr>
 
@@ -118,8 +108,8 @@ scatter plot of the CDC ILINet reported number of providers as a function of
 season week. As the scatter plot shows, the number of providers decreases
 sharply at around season week $33$. We identified this point by finding the
 inflection point of the averaged and smoothened CDC ILINet number of providers.
-The inflection point is also found via smotthened version to account for
-sporadic variations. the code snippet for finding the inflection point is given
+The inflection point is also found via smoothened version to account for
+sporadic variations. The code snippet for finding the inflection point is given
 below. The data archive can be found in <a href="./data/cdc-combined-national-2015-05-25.csv">cdc real time
 data snapshot</a></p>
 
@@ -167,7 +157,7 @@ real time data snapshot</a></p>
 <h1>
 <a id="strain-deviations" class="anchor" href="#strain-deviations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Strain Deviations</h1>
 
-<p>Similar to surveillane deviations, there could be deviations in ILI patterns
+<p>Similar to surveillance deviations, there could be deviations in ILI patterns
 for different strains that is broadly encompassed by the term ILI. </p>
 
 <p>Strain estimates can be obtained from <code>WHO NREVSS</code> (which is a lab based
@@ -215,7 +205,7 @@ combined_df[<span class="pl-s"><span class="pl-pds">'</span>ILI_FLUA<span class=
 <p>The raw <a href="./data/cdc-ILINet-national-2015-05-25.csv">ILINet data</a> and 
 <a href="./data/cdc-WHO_NREVSS-national-2015-05-25.csv">NREVSS data</a> is merged 
 together to <a href="./data/cdc-combined-national-2015-05-25.csv">Combined data</a> 
-for pulbic perusal.</p>
+for public perusal.</p>
 
 <p>This can be show pictorially as given below which shows a phase deviation
 between Flu B and ILI
@@ -224,10 +214,10 @@ between Flu B and ILI
 <hr>
 
 <h1>
-<a id="christmass-effect" class="anchor" href="#christmass-effect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Christmass Effect</h1>
+<a id="christmas-effect" class="anchor" href="#christmas-effect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Christmas Effect</h1>
 
 <p>Surveillance measures can often suffer from variations such as holiday periods.
-During holidays, such as Christmass in USA, people may chose to visit hospitals for only
+During holidays, such as Christmas in USA, people may chose to visit hospitals for only
 essential visits (example: people may not visit for elective surgeries). 
 As a result, although the total number of patients may decrease, the number of 
 ILI related visits may remain the same. This contributes to an inflated
@@ -259,10 +249,10 @@ index_map <span class="pl-k">=</span> <span class="pl-c1">dict</span>(<span clas
 plot_meanDF <span class="pl-k">=</span> meanDF.ix[x, :].reset_index()</pre></div>
 
 <p><code>Christmass effect</code> is highlighted below which shows that a dip in normalized
-total visits coupled with a steady ILI related visit contributes to an inlated
+total visits coupled with a steady ILI related visit contributes to an inflated
 percent ILI, historically around week 52 for ILINet in USA.</p>
 
-<p><img src="./figures/christmass_effect.png" alt="png"></p>
+<p><img src="./figures/christmass_effect.png" alt="Christmas effect"></p>
 
 <hr>
 
