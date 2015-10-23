@@ -6,17 +6,17 @@ Accompanying material for "how not to forecast flu" paper.
 
 1. [Surveillance Instability](#surveillance-instability)
 1. [Between Surveillance Deviations](#between-surveillance-deviations)
-2. [Within Surveiillance Deviations](#strain-deviations)
+2. [Within Surveillance Deviations](#strain-deviations)
 4. [Drop off of surveillance](#surveillance-drop-off)
-5. [Christmass Effect](#christmass-effect)
+5. [Christmas Effect](#christmass-effect)
 6. [Data and Figures](#data)
 
 - - -
 
 # Surveillance Instability
 
-Surveillance data is genrally unstable. Usually it takes a number of updates
-from the agency before the surveillance data gets stabilizied.  This
+Surveillance data is generally unstable. Usually it takes a number of updates
+from the agency before the surveillance data gets stabilized.  This
 instability can vary from one country to another (within a single network) as
 well as between networks. Here we analyze the instability of two different kinds
 of surveillance networks:
@@ -33,7 +33,7 @@ PAHO provides lab based surveillance feeds. We show the phenomenon of
 `surveillance drop-off` on this network. PAHO updates for several Latin
 American countries were collected daily from `2012-10` to `2013-10`.  ILI
 estimates are generally updated at irregular intervals. We assumed the estimate
-for a particular country for an epi week as avialable from the last update as
+for a particular country for an epi week as available from the last update as
 the true value and calculated percentage relative error as:
 
 $\text{Error} = \frac{\text{data} - \text{last_update}}{\text{last_update}}$
@@ -41,7 +41,7 @@ $\text{Error} = \frac{\text{data} - \text{last_update}}{\text{last_update}}$
 The snapshot of the daily downloads can be found in [PAHO
 updates](./data/PAHO_2013-10-10.xlsx). We can show the relative error as 
 a function of update as given below:
-![PAHO Instabiity](./figures/ili_updates.png)
+![PAHO Instability](./figures/ili_updates.png)
 
 As can be seen in the figure countries fall nicely in two groups as slowly
 stabilizing countries  (such as `Colombia` and `Peru`) and quickly stabilizing
@@ -56,7 +56,7 @@ found in [CDC historical archive snapshot](./data/cdc-historical-2010-2015.csv)
 
 ### Animated CDC Updates
 
-An animation of how the CDC updates happens for varios epi weeks is shown
+An animation of how the CDC updates happens for various epi weeks is shown
 below. We animate the updates for 2013-2014 season for various reporting week
 here:
 ![Animated CDC Updates](./figures/animated_cdc.gif)
@@ -67,7 +67,7 @@ shown below. We also plot the mean relative error in this figure.
 ![CDC instability stats](./figures/cdc_instability.png)
 
 As can be seen, similar to PAHO a number of updates is required before the 
-value stabilizies. However, CDC data for USA is found to be `fast stabilizing`. 
+value stabilizes. However, CDC data for USA is found to be `fast stabilizing`. 
 
 
 - - -
@@ -81,8 +81,8 @@ scatter plot of the CDC ILINet reported number of providers as a function of
 season week. As the scatter plot shows, the number of providers decreases
 sharply at around season week $33$. We identified this point by finding the
 inflection point of the averaged and smoothened CDC ILINet number of providers.
-The inflection point is also found via smotthened version to account for
-sporadic variations. the code snippet for finding the inflection point is given
+The inflection point is also found via smoothened version to account for
+sporadic variations. The code snippet for finding the inflection point is given
 below. The data archive can be found in [cdc real time
 data snapshot](./data/cdc-combined-national-2015-05-25.csv)
 
@@ -131,7 +131,7 @@ real time data snapshot](./data/cdc-combined-national-2015-05-25.csv)
 
 # Strain Deviations
 
-Similar to surveillane deviations, there could be deviations in ILI patterns
+Similar to surveillance deviations, there could be deviations in ILI patterns
 for different strains that is broadly encompassed by the term ILI. 
 
 Strain estimates can be obtained from `WHO NREVSS` (which is a lab based
@@ -180,7 +180,7 @@ combined_df['ILI_FLUA'], combined_df['ILI_FLUB'] = zip(*combined_df.apply(get_va
 The raw [ILINet data](./data/cdc-ILINet-national-2015-05-25.csv) and 
 [NREVSS data](./data/cdc-WHO_NREVSS-national-2015-05-25.csv) is merged 
 together to [Combined data](./data/cdc-combined-national-2015-05-25.csv) 
-for pulbic perusal.
+for public perusal.
 
 This can be show pictorially as given below which shows a phase deviation
 between Flu B and ILI
@@ -188,10 +188,10 @@ between Flu B and ILI
 
 - - -
 
-# Christmass Effect
+# Christmas Effect
 
 Surveillance measures can often suffer from variations such as holiday periods.
-During holidays, such as Christmass in USA, people may chose to visit hospitals for only
+During holidays, such as Christmas in USA, people may chose to visit hospitals for only
 essential visits (example: people may not visit for elective surgeries). 
 As a result, although the total number of patients may decrease, the number of 
 ILI related visits may remain the same. This contributes to an inflated
@@ -225,10 +225,10 @@ plot_meanDF = meanDF.ix[x, :].reset_index()
 ```
 
 `Christmass effect` is highlighted below which shows that a dip in normalized
-total visits coupled with a steady ILI related visit contributes to an inlated
+total visits coupled with a steady ILI related visit contributes to an inflated
 percent ILI, historically around week 52 for ILINet in USA.
 
-![png](./figures/christmass_effect.png)
+![Christmas effect](./figures/christmass_effect.png)
 
 - - -
 
