@@ -167,17 +167,17 @@
 % Title must be 250 characters or less.
 \begin{flushleft}
 {\Large
-\textbf\newline{How Not to Forecast the Flu} % Please use "title case" (capitalize all terms in the title except conjunctions, prepositions, and articles).
+\textbf\newline{What to Know Before Forecasting the Flu} % Please use "title case" (capitalize all terms in the title except conjunctions, prepositions, and articles).
 }
 \newline
 % Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
 \\
-Prithwish Chakraborty\textsuperscript{1,2*},
+Prithwish Chakraborty\textsuperscript{1,2},
 Bryan Lewis\textsuperscript{3},
 Stephen Eubank\textsuperscript{3},
 John S. Brownstein\textsuperscript{4,5},
 Madhav Marathe\textsuperscript{2,3}, and
-Naren Ramakrishnan\textsuperscript{1,2},
+Naren Ramakrishnan\textsuperscript{1,2*},
 \\
 \bigskip
 \textbf{1} Discovery Analytics Center, Virginia Tech, VA, USA\\
@@ -209,8 +209,9 @@ Naren Ramakrishnan\textsuperscript{1,2},
 % Group/Consortium Author Note
 % \textpilcrow Membership list can be found in the Acknowledgments section.
 
-% Use the asterisk to denote corresponding authorship and provide email address in note below.
-* prithwi@vt.edu
+% Use the asterisk to denote corresponding authorship and provide email address in note below
+
+* naren@cs.vt.edu
 
 \end{flushleft}
 % Please keep the abstract below 300 words
@@ -233,23 +234,27 @@ addressed for effective and useful forecasting.
 
 % Use "Eq" instead of "Equation" for equation citations.
 \section*{Introduction}
-As we prepare to embark upon a new flu season, we will hear the usual
-cautionary notes about
+During the start of every new flu season, we hear the usual cautionary notes about
 vaccinations, the preparedness of our health systems, and the specific strains
 that are relevant for these seasons.  Recent competitions, organized by
-agencies like the CDC and IARPA, have spurred interest in flu forecasting
-across academia and industry. While the CDC competition aimed to forecast flu
-seasonal characteristics in the US, the IARPA Open Source Indicators (OSI)
-forecasting tournament was focused on disease forecasting (flu and rare
-diseases) in countries of Latin America. Our team was declared the winner in
-the IARPA OSI competition and our goal here is to communicate our lessons
-learned about what goes into a successful forecasting engine while ensuring its
-relevance to public health policy and, consider some common assumptions that
-can be violated and require careful attention. Broadly, such considerations 
-can be categorized with respect to  `Surveillance Characteristics' 
-(see Fig~\ref{fig1})
-and `Forecasting Practices' (see Fig~\ref{fig2}). We discuss these considerations
-and present our recommendations on pitfalls to avoid, as below.
+agencies like the CDC (\url{https://www.cdc.gov/flu/news/flu-forecast-website-launched.htm})
+and IARPA (\url{https://www.iarpa.gov/index.php/research-programs/osi}),
+have spurred interest in flu forecasting across academia and industry.
+While the CDC competition aimed to forecast flu seasonal characteristics in the
+US, the IARPA Open Source Indicators (OSI) forecasting tournament was focused
+on disease forecasting (flu and rare diseases) in countries of Latin America.
+Our team was declared the winner in the IARPA OSI competition and have also
+been involved with the CDC competition since its first years, performing
+consistently amongst top teams w\.r\.t\. certain characteristics such as peak
+percentage and lead time in forecasting the peak.
+Our goal here is to communicate our lessons learned about what goes into a
+successful forecasting engine while ensuring its relevance to public health
+policy and, consider some common assumptions that can be violated and require
+careful attention.
+Broadly, such considerations can be categorized with respect to  `Surveillance
+Characteristics' (see Fig~\ref{fig1}) and `Forecasting Practices' (see
+Fig~\ref{fig2}). We discuss these considerations and present our recommendations on 
+pitfalls to avoid, as below.
 
 % Place figure captions after the first paragraph in which they are cited.
 % \begin{figure}[!h]
@@ -271,12 +276,12 @@ and present our recommendations on pitfalls to avoid, as below.
   \centering
   \includegraphics[width=0.96\linewidth]{./figs/Fig1.eps}
 
-  \caption{\textbf{Different Characteristics of Surveillance systems.}
-  (a)  Phase differences in reported ILI percentages between two 
-  surveillance systems(ILINet vs WHO NREVSS).
-  (b)  Phase differences between different ILI substrains 
-  (Flu A vs Flu B) leading to double peaked overall ILI curve.
-  (c) Surveillance reports unstable many weeks after first report.
+  \caption{\textbf{Surveillance Characteristics:} Data range 2012-2015.
+  (a)  Lag between reported ILI percentage curves as reported by two 
+  surveillance systems(ILINet vs WHO NREVSS) in the US,
+  (b)  Lag between ILI substrains reports at national level (Flu A vs Flu B)
+  leading to double peaked overall ILI curve in the US,
+  (c) Surveillance reports are revised many weeks after first report.
   While countries like Chile stabilizes quickly (within 5 weeks), 
   other countries like Argentina stabilizes after many weeks ($\geq 10$). 
   (d) Surveillance drop-off towards the end of the season - scatter plot of 
@@ -301,29 +306,28 @@ and present our recommendations on pitfalls to avoid, as below.
   % \subfloat[Instability Correction\label{2e}]{\includegraphics[height=0.10\textheight, width=0.25\textwidth]{./figs/PahoCorrection.png}} \\
   \includegraphics[width=0.96\linewidth]{./figs/Fig2.eps}
 
-  \caption{\textbf{Forecast accuracy under various conditions.}
+  \caption{\textbf{Forecasting Characteristics:} Data range 2012-2015.
   (a) \textit{Single Source:}
-  Forecast accuracy for each individual source (Weather, Healthmap, 
+  Forecast accuracy~\cite{tabataba2015smq} for each individual source (Weather, HealthMap, 
   Twitter, Google Flu Trends and Google Search Trends). No particular 
   source is the best for all countries.
   (2) \textit{Multiple Sources:}
   Percent increase in forecast accuracies while combining multiple sources at 
-  Model level and at Data level over best single source forecasts.
+  Model level and at Data level over best single source forecasts~\cite{chakraborty2014forecasting}.
   Model level gives better overall performance.
   (c) \textit{Ablation test:}
   Percent reduction in forecast accuracies while 
   removing one source at a time from the Model fusion. 
   Removing a source can lead to better performance for some
-  countries.
+  countries~\cite{chakraborty2014forecasting}.
   (d) \textit{Segregation Test:}
-  Percent increase in forecast accuracies for US ILI data considering 
-  segregation by age and by subtype over unsegregated forecasts.
+  Percent increase in forecast accuracies for US ILI data considering forecasts made individually 
+  for ILI cases by age and by subtype  over forecasts on un-segregated data.
   Segregated methods show better accuracy.
   (e) \textit{Instability Correction:}
-  Percent increase in forecast accuracies
-  for different countries after correction over uncorrected forecasts.
-  Significant improvement can be seen for countries like Argentina and 
-  Paraguay.
+  Percent increase in forecast accuracies for different countries after
+  correction over uncorrected forecasts.  Significant improvement can be seen
+  for countries like Argentina and Paraguay~\cite{chakraborty2014forecasting}.
   \label{fig2}
   }
 \end{figure}
@@ -338,7 +342,7 @@ characteristics in the following sections.
 \subsection*{Surveillance networks do not measure the same quantity}
 Influenza-like Illnesses (ILI), tracked by many agencies such as CDC, PAHO, and
 WHO~\cite{cdc,paho,who}, is a category designed to capture severe respiratory
-disease, like influenza (flu), but also includes many other less severe
+disease, like flu, but also includes many other less severe
 respiratory illness due to their similar presentation. Surveillance methods
 often vary between agencies. Even for a single agency, there may be different
 networks (such as outpatient based and lab sample based) tracking ILI/Flu.
@@ -346,19 +350,20 @@ While outpatient reporting networks such as ILINet aim to measure exact case
 counts for the regions under consideration, lab surveillance networks such as
 WHO NREVSS (used by PAHO) seek to confirm and identify the specific strain.  In
 the absence of a clinic based surveillance system, lab-based systems can
-provide estimates at per ``X'' population level; however making an estimate of
-actual influenza flu cases from these systems is challenging~\cite{cdc}.
+provide estimates for the population based on percent positives in the samples;
+however making an estimate of actual influenza flu cases from these systems is challenging~\cite{cdc}.
 Furthermore, surveillance reports are often non-representative of actual ILI
-incidence (see. ``epidemic data pyramid'') and can often suffer from variations
-such as holiday periods where behavior of people visiting hospitals changes
-from other weeks (see.  ``Christmas effect'' in supplementary material).
-Additionally, the number of cases represented by a single positive lab sample
-in a densely populated country with wide lab network coverage necessarily
-differs from one in a more resource constrained lab surveillance system. For
+incidence (see. ``epidemic data pyramid'' in supplementary material)
+and can often suffer from variations such as holiday periods where behavior of
+people visiting hospitals changes from other weeks (see.  ``Christmas effect''
+in supplementary material).
+Additionally, the representativeness of a positive lab sample
+in a densely populated country with wide lab network coverage may
+differ from one in a more resource constrained lab surveillance system. For
 example, in the US, the CDC reports percentage positive ILI for ILINet (an
 outpatient reporting network) and for WHO NREVSS (based on lab samples). While
 both networks are designed for different purposes and provide valuable
-information for forecasting, they exhibit significant phase differences (see
+information for forecasting, they exhibit significant lags between reported ILI seasons (see
 Fig~\ref{fig1}a).  and, it is essential for forecasters to distinguish between
 surveillance networks and their intricacies.  This difference is especially
 important when conducting cross-correlation studies between different countries
@@ -374,42 +379,50 @@ to gather than more expensive and labor-intensive virological tests; however,
 this definition means that multiple influenza strains and respiratory
 infections are aggregated together. Such aggregation poses difficulties in
 modeling because different strains of the flu exhibit different seasonal
-characteristics (see Fig~\ref{fig1}b) where Flu A shows significantly different
-phase than Flu B).  Consequently, a single forecasting model is unlikely to
+characteristics (see Fig~\ref{fig1}b) where Flu A shows significantly time-shifted
+seasons than Flu B).  Consequently, a monolithic forecasting model that doesn't distinguish 
+between such sub-categories is unlikely to
 capture the behavior of the overall epicurve. Our recommendation is to not
-treat ILI as an atomic illness and instead predict for sub-strains if data at
-required resolution(s) is available. Our experiments suggest that such
+treat ILI as an atomic illness and build models that are cognizant of sub-strains
+if data at required resolution(s) is available.
+Although~\cite{axelsen2014multiannual} has reported successful results via 
+monolithic models, our experiments using models from~\cite{chakraborty2014forecasting} suggest that such
 breakdown by strains can produce better quality predictions by accounting for
-phase shifts between them (see Fig~\ref{fig2}d).
+temporal shifts between them (see Fig~\ref{fig2}d).
 
 Similarly, building models at the national level without
 considering differences in geography is likely to lead to erroneous results as
 ILI characteristics are again shifted and scaled differently across regions. In
 a geographically diverse country such as the United States, ILI seasonal curves
 are consistently out of phase between different HHS regions as well as the
-national curve. Further, a single region (e.g., HHS region 10 which subsumes
+national curve. Furthermore, a single region (e.g., HHS region 10 which subsumes
 states such as Alaska and Washington) can be composed of non-contiguous land
 masses which may make any assumption about uniformity in ILI profiles
 inaccurate.
 
 \subsection*{Surveillance data is not stable}
-Epidemiologists who work with surveillance data know that, while useful, they
+From our experiences / experiments we have found that surveillance data
 are often delayed and can be candidates for revision/updating for several weeks
 after initial publication. The lag between initial publication and final
 revision can be as small as 2 weeks (e.g., for CDC ILINet data) or can wildly
 fluctuate (for example, PAHO reports for some Latin American countries such as
 Argentina, Colombia and Mexico can take more than 10 weeks to settle. On the
 other hand, PAHO reports stabilize within 5 weeks for countries such as Chile,
-Costa Rica and Peru (see Fig~\ref{fig1}c).  The reason for such discrepancies
-has to do with the maturity of the surveillance apparatus and the level of
-coordination underlying public health reporting. Most works on forecasting do
-not account for such instability. In essence, we are forecasting a moving
-target and recent research~\cite{fischhoff2014communicating} suggests that
-modeling such uncertainty directly in a forecasting model can significantly
-improve performance. In particular, a stabilization or auto-correction term can
-be inferred by conducting a regression for the final estimate as a function of
-the intermediate values (and their times of publication)(see Fig~\ref{fig2}e).
-One could devise more intricate algorithms that take into account cross-country
+Costa Rica and Peru (see Fig~\ref{fig1}c).
+The reason for such discrepancies can possibly be due to many complex factors
+such as maturity of the surveillance apparatus and the level of coordination
+underlying public health reporting.
+Most works on forecasting do not account for such revisions in reports (data
+instability).  Some researchers~\cite{shaman2013real,goldstein2011predicting}
+have used empirical methods to factor possible variations in data - however, such empirical 
+methods don't provide guidance for broader geographical context/surveillance apparatus.
+In essence, we are forecasting a moving target and recent
+research~\cite{fischhoff2014communicating} suggests that modeling such
+uncertainty directly in a forecasting model can significantly improve
+performance. In particular, a stabilization or auto-correction term can be
+inferred by conducting a regression for the final estimate as a function of the
+intermediate values (and their times of publication)(see Fig~\ref{fig2}e).  One
+could devise more intricate algorithms that take into account cross-country
 correlations and country-specific societal factors to correct for imperfections
 in surveillance. 
 
@@ -437,20 +450,21 @@ benefit these corrections.
 – forecasting reason}
 Measuring forecasting skill is dependent on the actual use of the forecasts,
 which varies widely. Not surprisingly, there is no accepted measure of
-forecasting performance. We conducted a survey~\cite{matsubara2014funnel} where
-we identified 7 different metrics for around 10 different quantities each
-evaluating a different facet of flu. Moreover, evaluations often involve
-multiple criteria, can include subjective components, and present trade-offs
-where the balance of preferences is not well articulated. A vanilla
-mean-squared error criterion will lead to a model with a tendency to
-under-predict the peaks when trained uniformly over complete seasons. However,
-if agencies are more interested in peak characteristics such a measure can be
-modified to penalize deviations around peak more severely. Thus understanding
-the requirements of health agencies is essential to generate meaningful
-forecasts. Additionally, quantifying forecasting uncertainty and presenting the
-same~\cite{tabataba2015smq} in a meaningful manner is of prime importance to
+forecasting performance. Recently, Farzaneh et al.~\cite{tabataba2015smq}
+identified 7 different metrics for around 10 different quantities each
+evaluating a different facet of flu.
+Moreover, evaluations often involve multiple criteria, can include subjective
+components, and present trade-offs where the balance of preferences is not well
+articulated. A vanilla mean-squared error criterion will lead to a model with a
+tendency to under-predict the peaks when trained uniformly over complete
+seasons. However, if agencies are more interested in peak characteristics such
+a measure can be modified to penalize deviations around peak more severely.
+Thus understanding the requirements of health agencies is essential to generate
+meaningful forecasts. Additionally, quantifying forecasting uncertainty and
+presenting the same~\cite{tabataba2015smq} in a meaningful manner is of prime importance to
 facilitate actionable strategies from health agencies.
 
+\iffalse
 \subsection*{The best case count predictor might not capture seasonal characteristics}
 Forecasting tournaments provide much needed impetus to improving the
 state-of-the-art of the field but viewing ILI prediction as machine learning or
@@ -459,10 +473,13 @@ according to a sum-of-squared-error or classical goodness-of-fit measure might
 completely miss the most important seasonal characteristics such as the start
 epiweek of the season, peak epiweek, and peak value - indicators likely to be
 more important for public health and infection control purposes. 
+\fi
 
-\subsection*{Most published literature focuses on retrospective evaluations of forecasting methods}
+\subsection*{Most published literature focuses on retrospective evaluations of 
+forecasting methods. Many forecasting methods are not predicting into the future;
+they are nowcasting, or near-casting}
 To the best of our knowledge, the CDC and IARPA OSI competitions are the only
-two competitions that truly involve forecasting into the future. Participants
+two competitions that truly involved forecasting into the future. Participants
 were required to submit time-stamped forecasts that must arrive before the
 event date (and thus certainly before the surveillance data becomes available).
 In contrast, almost all published literature focuses on retrospective analysis
@@ -472,8 +489,8 @@ models indefinitely, and out-of-sample testing is no substitute for
 forecasting. Dangers include not just overfitting but also vulnerability to
 model drift over time.
 
-\subsection*{Many forecasting projects are not predicting into the future; they are really nowcasting, or near-casting}
-Due to the delays and updates inherent in surveillance data, a ``forecasting''
+% \subsection*{Many forecasting projects are not predicting into the future; they are really nowcasting, or near-casting}
+Also, it is to be noted that due to the delays and updates inherent in surveillance data, a ``forecasting''
 project predicting one or two weeks into the future is in essence a
 ``nowcasting''~\cite{lampos2012nowcasting} system.  Understanding this aspect
 is crucial as it could lead to intelligent strategies of handling surrogate
@@ -526,7 +543,7 @@ makers.
 
 \paragraph*{S1 Appendix.}
 \label{S1_Appendix}
-Datasets and associated code snippets for this article is archived at the
+Datasets, associated code snippets and abbreviations used in this article is archived at the
 publicly accessible github page \url{http://prithwi.github.io/how_not2_flu}.
 
 
