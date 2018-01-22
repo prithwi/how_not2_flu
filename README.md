@@ -1,5 +1,5 @@
 # how_not2_flu
-Accompanying material for "how not to forecast flu" paper.
+Accompanying material for "What to Know before Forecasting the Flu" paper.
 
 
 **Table of contents**

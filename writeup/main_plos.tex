@@ -156,6 +156,8 @@
 %%                         CUSTOM PACKAGES
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{color}
+\newcommand{\narenc}[1]{{\color{black}\textrm{#1}}}
+
 \usepackage{subfig}
 %% END MACROS SECTION
 
@@ -167,7 +169,7 @@
 % Title must be 250 characters or less.
 \begin{flushleft}
 {\Large
-\textbf\newline{What to Know Before Forecasting the Flu} % Please use "title case" (capitalize all terms in the title except conjunctions, prepositions, and articles).
+\textbf\newline{\narenc{What to Know Before Forecasting the Flu}} % Please use "title case" (capitalize all terms in the title except conjunctions, prepositions, and articles).
 }
 \newline
 % Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
@@ -221,10 +223,8 @@ in recent times. If done well, such forecasting can aid in deploying effective
 public health measures. Unlike other statistical or machine learning problems,
 however, flu forecasting brings unique challenges and considerations stemming
 from the nature of the surveillance apparatus and the end-utility of forecasts.
-This article presents a set of considerations for flu modelers that must be
-addressed for effective and useful forecasting.
-
-
+\narenc{This article presents a set of considerations for flu forecasters to take into account
+prior to applying forecasting algorithms.}
 % Please keep the Author Summary between 150 and 200 words
 % Use first person. PLOS ONE authors please skip this step. 
 % Author Summary not valid for PLOS ONE submissions.   
@@ -234,27 +234,31 @@ addressed for effective and useful forecasting.
 
 % Use "Eq" instead of "Equation" for equation citations.
 \section*{Introduction}
-During the start of every new flu season, we hear the usual cautionary notes about
+\narenc{During the start of every new flu season, we hear the usual cautionary notes about
 vaccinations, the preparedness of our health systems, and the specific strains
-that are relevant for these seasons.  Recent competitions, organized by
-agencies like the CDC (\url{https://www.cdc.gov/flu/news/flu-forecast-website-launched.htm})
-and IARPA (\url{https://www.iarpa.gov/index.php/research-programs/osi}),
-have spurred interest in flu forecasting across academia and industry.
+that are relevant for the upcoming season. Once considered heterdox, forecasting the 
+characteristics of the annual flu season is now a mainstream activity, thanks to 
+scientific competitions organized by
+agencies like the CDC (Centers for Disease Control and Prevention;
+\url{https://www.cdc.gov/flu/news/flu-forecast-website-launched.htm})
+and IARPA (Intelligence Advanced Research Projects Activity
+\url{https://www.iarpa.gov/index.php/research-programs/osi}).}
 While the CDC competition aimed to forecast flu seasonal characteristics in the
 US, the IARPA Open Source Indicators (OSI) forecasting tournament was focused
 on disease forecasting (flu and rare diseases) in countries of Latin America.
-Our team was declared the winner in the IARPA OSI competition and have also
-been involved with the CDC competition since its first years, performing
-consistently amongst top teams w\.r\.t\. certain characteristics such as peak
-percentage and lead time in forecasting the peak.
-Our goal here is to communicate our lessons learned about what goes into a
-successful forecasting engine while ensuring its relevance to public health
-policy and, consider some common assumptions that can be violated and require
-careful attention.
-Broadly, such considerations can be categorized with respect to  `Surveillance
-Characteristics' (see Fig~\ref{fig1}) and `Forecasting Practices' (see
+Our team was declared the winner in the IARPA OSI competition 
+and \narenc{as the winner in one category of the CDC competition (viz.
+prediting seasonal peak characteristics).
+While many statistical and machine learning algorithms are now popularly used
+in this domain (e.g., see~\cite{chakraborty2014forecasting,shaman2013real,goldstein2011predicting}), flu forecasting brings some unique considerations
+that necessitate novel data preprocessing and modeling strategies.
+Our goal here is to distill some of our lessons learned into considerations to
+take into account {\it prior} to applying a forecasting algorithm. Our focus is thus not
+on the forecasting algorithm itself but data preprocessing and modeling
+considerations that all forecasting algorithms must grapple with. These considerations
+fall in the cateogires of `Surveillance Characteristics' (see Fig~\ref{fig1}) and `Forecasting Methodology' (see
 Fig~\ref{fig2}). We discuss these considerations and present our recommendations on 
-pitfalls to avoid, as below.
+pitfalls to avoid below.}
 
 % Place figure captions after the first paragraph in which they are cited.
 % \begin{figure}[!h]
@@ -340,20 +344,23 @@ of the more important, but often overlooked, aspects of the surveillance
 characteristics in the following sections.
 
 \subsection*{Surveillance networks do not measure the same quantity}
-Influenza-like Illnesses (ILI), tracked by many agencies such as CDC, PAHO, and
-WHO~\cite{cdc,paho,who}, is a category designed to capture severe respiratory
+Influenza-like Illnesses (ILI), tracked by many agencies such as CDC, PAHO (Pan American
+Health Organization), and
+WHO (World Health Organization)~\cite{cdc,paho,who}, is a category designed to capture severe respiratory
 disease, like flu, but also includes many other less severe
 respiratory illness due to their similar presentation. Surveillance methods
 often vary between agencies. Even for a single agency, there may be different
 networks (such as outpatient based and lab sample based) tracking ILI/Flu.
-While outpatient reporting networks such as ILINet aim to measure exact case
+While outpatient reporting networks such as ILINet (U.S. Outpatient Influenza-like Illness 
+Surveillance Network) aim to measure exact case
 counts for the regions under consideration, lab surveillance networks such as
-WHO NREVSS (used by PAHO) seek to confirm and identify the specific strain.  In
+WHO NREVSS (National Respiratory and Enteric Virus Surveillance System;
+used by PAHO) seek to confirm and identify the specific strain.  In
 the absence of a clinic based surveillance system, lab-based systems can
 provide estimates for the population based on percent positives in the samples;
 however making an estimate of actual influenza flu cases from these systems is challenging~\cite{cdc}.
 Furthermore, surveillance reports are often non-representative of actual ILI
-incidence (see. ``epidemic data pyramid'' in supplementary material)
+incidence (\narenc{see ``epidemic data pyramid'' in supplementary material})
 and can often suffer from variations such as holiday periods where behavior of
 people visiting hospitals changes from other weeks (see.  ``Christmas effect''
 in supplementary material).
@@ -446,13 +453,12 @@ benefit these corrections.
 
 \section*{Forecasting Practices}
 
-\subsection*{There is no community agreement on measure(s) of performance
-– forecasting reason}
+\subsection*{There is no community agreement on measure(s) of performance}
 Measuring forecasting skill is dependent on the actual use of the forecasts,
 which varies widely. Not surprisingly, there is no accepted measure of
-forecasting performance. Recently, Farzaneh et al.~\cite{tabataba2015smq}
+forecasting performance. In reent work~\cite{tabataba2015smq}, we have
 identified 7 different metrics for around 10 different quantities each
-evaluating a different facet of flu.
+evaluating a different facet of the flu.
 Moreover, evaluations often involve multiple criteria, can include subjective
 components, and present trade-offs where the balance of preferences is not well
 articulated. A vanilla mean-squared error criterion will lead to a model with a
