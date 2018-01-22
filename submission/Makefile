@@ -13,3 +13,9 @@ clean:
 
 all: clean latex
 	dvipdf main_plos
+
+final:clean
+	latex main_plos
+	latex main_plos
+	dvipdf main_plos
+

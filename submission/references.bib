@@ -3,26 +3,27 @@
 % This is the .bib file used to compile the document "A simple Science
 % template" (scifile.tex).  It is not intended as an example of how to
 % set up your BibTeX file.
-
+eatright.org [Internet]. Chicago: Academy of Nutrition and Dietetics; c2016
+[cited 2016 Dec 27]. Available from: http://www.eatright.org/.
 @misc{cdc,
-    author={CDC},
+    author={{CDC [Internet]}},
     title={{Influenza (flu)}},
-    howpublished={\url{www.cdc.gov/flu/index.htm}},
-    note={Accessed: 2015-09-17}
+    howpublished={Available from: \url{www.cdc.gov/flu/index.htm}},
+    note={{c2018 [cited: 2018-01-21]}}
 }
 
 @misc{paho,
-    author={PAHO},
+    author={{PAHO [Internet]}},
     title={{Influenza and other Respiratory Viruses}},
-    howpublished={\url{http://ais.paho.org/phip/viz/ed_flu.asp}},
-    note={Accessed: 2015-09-01}
+    howpublished={Available from: \url{http://ais.paho.org/phip/viz/ed_flu.asp}},
+    note={{c2018 [cited: 2018-01-21]}}
 }
 
 @misc{who,
-    author={WHO},
+    author={{WHO [Internet]}},
     title={{Surveillance and Monitoring}},
-    howpublished={\url{http://www.who.int/influenza/surveillance_monitoring/en/}},
-    note={Accessed: 2015-09-17}
+    howpublished={Available from: \url{http://www.who.int/influenza/surveillance_monitoring/en/}},
+    note={{c2018 [cited: 2018-01-21]}}
 }
 
 @article{fischhoff2014communicating,
@@ -59,6 +60,17 @@
   publisher={Nature Publishing Group}
 }
 
+@article{goldstein2011predicting,
+  title={{Predicting the Epidemic Sizes of Influenza A/H1N1, A/H3N2, and B: A Statistical Method}},
+  author={Goldstein, Edward and Cobey, Sarah and Takahashi, Saki and Miller, Joel C and Lipsitch, Marc},
+  journal={PLoS medicine},
+  volume={8},
+  number={7},
+  pages={e1001051},
+  year={2011},
+  publisher={Public Library of Science}
+}
+
 @inproceedings{matsubara2014funnel,
   title={{FUNNEL: Automatic Mining of Spatially Coevolving Epidemics}},
   author={Matsubara, Yasuko and Sakurai, Yasushi and van Panhuis, Willem G and Faloutsos, Christos},
@@ -68,40 +80,15 @@
   organization={ACM}
 }
 
-@techreport{tabataba2015smq,
-title = {{Standard Measures and Quality Metrics for Evaluating the Performance of Forecasting Methods: Special Study on Influenza in US}},
-author = {Farzaneh S. Tabataba and Prithwish Chakraborty and Naren Ramakrishnan
-    and Madhav V. Marathe and Jiangzhuo Chen and Bryan L. Lewis},
-year = {2015},
-institution = {NDSSL},
-reportnumber = {15-107},
-abstract = {Over the past few decades, numerous forecasting methods have been
-  proposed in the field of epidemic forecasting. Such methods can be
-  classified into different categories such as deterministic vs
-  probabilistic, comparative methods versus generative methods and so on.
-  In some of the more popular comparative methods, researchers compare
-  observed epidemiological data from early stages of an outbreak with
-  proposed models to forecast about the future trend and prevalence of
-  the pandemic. One of the most important problems in this area is the
-  lack of standard well defined evaluation measures to select the best
-  algorithm among different ones as well as for selecting the best
-  possible configuration for a par- ticular algorithm. In this paper, we
-  present different epidemic measures to characterize the output of
-  forecasting methods and furthermore provide suitable metrics that could
-  be used to evaluate the accu- racy of the methods with respect to these
-  epidemic measures. we are focusing on seasonal predictions rather than
-  near time predictions and present our analysis on two different
-  forecasting methods which generate prediction for the whole season
-  based on observed data. Our accuracy results suggest that, while
-  evaluating forecasts with respect to various epidemic measures, no
-  single measure or metric can describe all the features of a forecasting
-  algorithm. Furthermore, all/most of them should be considered to have a
-  comprehensive evaluation. Moreover, depending on the purpose of the
-  forecasting algorithm, some epidemic measures should be weighted more
-  for concluding the comparison. The proposed epidemic measures can also
-  be used to describe different features of an epidemic season and the 
-  abnormal values of these measures (low or high), can indicate a severe 
-  season that is an alarm for health center providers.},
+@article{tabataba2015smq,
+  title={{A Framework for Evaluating Epidemic Forecasts}},
+  author={Tabataba, Farzaneh Sadat and Chakraborty, Prithwish and Ramakrishnan, Naren and Venkatramanan, Srinivasan and Chen, Jiangzhuo and Lewis, Bryan and Marathe, Madhav},
+  journal={BMC infectious diseases},
+  volume={17},
+  number={1},
+  pages={345},
+  year={2017},
+  publisher={BioMed Central}
 }
 
 @article{hall2007,
@@ -179,3 +166,13 @@ abstract = {Over the past few decades, numerous forecasting methods have been
   year={2014}
 }
 
+@article{axelsen2014multiannual,
+  title={{Multiannual Forecasting of Seasonal Influenza Dynamics Reveals Climatic and Evolutionary Drivers}},
+  author={Axelsen, Jacob Bock and Yaari, Rami and Grenfell, Bryan T and Stone, Lewi},
+  journal={Proceedings of the National Academy of Sciences},
+  volume={111},
+  number={26},
+  pages={9538--9542},
+  year={2014},
+  publisher={National Acad Sciences}
+}
