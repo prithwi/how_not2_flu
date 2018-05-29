@@ -1,0 +1,22 @@
+% \documentclass[varwidth, border=0.125in]{standalone}
+\documentclass[a4paper]{article}
+\usepackage[cm]{fullpage}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{subfloat}
+% \usepackage{subcaption}
+
+\begin{document}
+\begin{figure}[htpb]
+  \centering
+  \subfloat[Single source prediction accuracy]{\includegraphics[width=0.55\textwidth]{./singleSource.png}} 
+  \hspace{0.5em}
+  \subfloat[Multiple source prediction accuracy]{\includegraphics[width=0.35\textwidth]{./ModelVsData.png}} 
+  \\
+  \subfloat[Percentage Accuracy reduction due to source ablation]{\includegraphics[width=0.45\textwidth]{./Ablation.png}}
+  \hspace{0.5em}
+  \subfloat[Segregation: Prediction accuracy]{\includegraphics[width=0.25\textwidth]{./FluSegregation.png}} 
+  \hspace{0.5em}
+  \subfloat[Instability Correction]{\includegraphics[width=0.25\textwidth]{./PahoCorrection.png}} \\
+\end{figure}
+\end{document}
